@@ -1,5 +1,6 @@
 {% set name = "pydantic-numpy" %}
-{% set version = "8.0.0" %}
+{% set version = "8.0.1" %}
+{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +8,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pydantic_numpy-{{ version }}.tar.gz
-  sha256: f7beff41ad3d827edd53751d7b0448924bba24160f5f4a38c9374dc7971423ac
+  sha256: 85ae382ff4ebd23902791f6710d26f039a6215670d8c128ac30d5b79171fde13
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
@@ -20,7 +21,7 @@ requirements:
     - poetry-core >=1.0.0
     - pip
   run:
-    - python >={{ python_min }},<3.14
+    - python {{ python_min }}
     - compress-pickle
     - ruamel.yaml >=0.18.5,<0.19.0
     - numpy >=2.0.0
